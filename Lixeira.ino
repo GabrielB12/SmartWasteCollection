@@ -29,20 +29,18 @@ String GAS_ID = "AKfycbw8ulo008Rkph4iG8sJb2CnCpWOTiKM8nibQJ_SXt0DzpD5V_eVlAbFZMQ
 
 void setup()
 {
-           Serial.begin(9600);
-              WiFi.mode(WIFI_STA);
-              WiFi.begin(ssid, password);
-             
-                              while (WiFi.status() != WL_CONNECTED) {
-                                delay(500);
-                                Serial.print(".");
-                              }
-          
-              //sendData(113,125);  // Send test data
+  Serial.begin(9600);
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+  
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
 
-              pinMode(trigP, OUTPUT);
-              pinMode(echoP, INPUT);
-              startMillis = millis();
+  pinMode(trigP, OUTPUT);
+  pinMode(echoP, INPUT);
+  startMillis = millis();
 }
 
 void loop()
@@ -67,14 +65,10 @@ void loop()
   }
 
   int a,b;                       //a,b are variables to store sensor values
-    a=distance;                         
-    //b=distance;
-    sendData(a);               //This function uploads data to Google Sheets
+  a=distance;
+  sendData(a);               //This function uploads data to Google Sheets
         
 }
-
-
-
 
 void sendData(int x)
 {
@@ -86,15 +80,7 @@ void sendData(int x)
     return;
   }
 
-  /*
-  if (client.verify(fingerprint, host)) {
-  Serial.println("certificate matches");
-  } else {
-  Serial.println("certificate doesn't match");
-  }
-  */
   String string_x     =  String(x, DEC);
-  //String string_y     =  String(y, DEC);
   String url = "/macros/s/" + GAS_ID + "/exec?Distance=" + string_x;
   Serial.print("requesting URL: ");
   Serial.println(url);
