@@ -24,7 +24,7 @@ WiFiClientSecure client;
 
 
 const char* fingerprint = "46 B2 C3 44 9C 59 09 8B 01 B6 F8 BD 4C FB 00 74 91 2F EF F6";
-String GAS_ID = "AKfycbw8ulo008Rkph4iG8sJb2CnCpWOTiKM8nibQJ_SXt0DzpD5V_eVlAbFZMQbXUBWRhNMIQ";  // Replace by your GAS service id
+String GAS_ID = "AKfycbxXEX7iS29mDDwQF-J3IiuUNC5p-tr7yklIAaf7eqgYUcOcKOkS_QDPhhNCD1eiQV9ZAw";  // Replace by your GAS service id
 
 
 void setup()
@@ -81,7 +81,7 @@ void sendData(int x)
   }
 
   String string_x     =  String(x, DEC);
-  String url = "/macros/s/" + GAS_ID + "/exec?Distance=" + string_x;
+  String url = "/macros/s/" + GAS_ID + "/exec?Distance3=" + string_x;
   Serial.print("requesting URL: ");
   Serial.println(url);
 
