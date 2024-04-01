@@ -2,8 +2,8 @@
 #include <WiFiClientSecure.h>
 
 String readString;
-const char* ssid = "Tricolor";
-const char* password = "trimundial";
+const char* ssid = "";
+const char* password = "";
 
 const char* host = "script.google.com";
 const int httpsPort = 443;
@@ -45,28 +45,28 @@ void setup()
 
 void loop()
 {
-  currentMillis = millis();  //get the current "time" (actually the number of milliseconds since the program started)
-  if (currentMillis - startMillis >= period)  //test whether the period has elapsed
+  currentMillis = millis();  
+  if (currentMillis - startMillis >= period)  
   {
-    digitalWrite(trigP, LOW);   // Makes trigPin low
-    delayMicroseconds(2);       // 2 micro second delay 
+    digitalWrite(trigP, LOW);   
+    delayMicroseconds(2);      
     
-    digitalWrite(trigP, HIGH);  // tigPin high
-    delayMicroseconds(10);      // trigPin high for 10 micro seconds
-    digitalWrite(trigP, LOW);   // trigPin low
+    digitalWrite(trigP, HIGH);  
+    delayMicroseconds(10);      
+    digitalWrite(trigP, LOW);   
     
-    duration = pulseIn(echoP, HIGH);   //Read echo pin, time in microseconds
-    distance= duration*0.034/2;        //Calculating actual/real distance
+    duration = pulseIn(echoP, HIGH);   
+    distance= duration*0.034/2;        
     
-    Serial.print("Distance = " + distance);        //Output distance on arduino serial monitor 
+    Serial.print("Distance = " + distance);        
     Serial.println(distance);
-    startMillis = currentMillis;  //IMPORTANT to save the start time of the current LED state.
+    startMillis = currentMillis; 
 
   }
 
-  int a,b;                       //a,b are variables to store sensor values
+  int a,b;                      
   a=distance;
-  sendData(a);               //This function uploads data to Google Sheets
+  sendData(a);              
         
 }
 
