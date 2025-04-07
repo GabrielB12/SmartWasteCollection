@@ -46,7 +46,7 @@ void setup() {
 }
 
 void loop() {
-  // nunca entra aqui, porque usamos deepSleep no final do setup()
+  // nunca entra aqui, porque é usado deepSleep no final do setup()
 }
 
 void sendData(int x) {
